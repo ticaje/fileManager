@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Ticaje\FileManager\Infrastructure\Driver\Reader\Interfaces;
 
+use Iterator;
 use Ticaje\FileManager\Infrastructure\Driver\Reader\Interfaces\Gateway\FileGatewayInterface;
 
 /**
@@ -24,7 +25,7 @@ interface FileInterface
     /**
      * @return mixed
      */
-    public function getContent();
+    public function getContent():Iterator;
 
     /**
      * @return bool
