@@ -35,6 +35,7 @@ which could be translated as async data handling or at least on demand.
 ### Standalone Instantiation
 
 ```php
+
 <?php
 declare(strict_types=1);
 
@@ -46,10 +47,23 @@ $fileName = '/path/to/file.xlsx'; // Too simple to explain
 $implementor = new Implementor();
 $fileManager = new FileAgent($implementor, true); // gonna say it has header
 $fileManager->setSource($fileName);
+$simpleIterator = new SimpleIterator($fileManager);
+
+// Get first five rows
+$firstFiveRows = $simpleIterator->getChunk(0, 5);
+print_r($firstFiveRows); // printing content out
+
+// Get rest of content
 $content = $fileManager->getContent();
-$implementor = $fileManager->getImplementor();
-$simpleIterator = new SimpleIterator($content, $implementor);
-$cell = $simpleIterator->getChunk(0, 5);
+while ($content->valid()) {
+    $item = $content->current();
+    print_r($implementor->asArray($item)); // printing content out
+    $content->next();
+}
+
+// Printing out header
+$header = $fileManager->getHeader();
+print_r($implementor->asArray($header));
 
 ```
 
