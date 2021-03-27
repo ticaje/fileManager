@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace Ticaje\FileManager\Infrastructure\Driver\Iterator;
 
 use Iterator as SuperIterator;
+use Ticaje\FileManager\Infrastructure\Driver\Reader\Interfaces\FileInterface as FileManagerAgency;
 use Ticaje\FileManager\Infrastructure\Driver\Reader\Interfaces\Gateway\FileGatewayInterface;
 
 /**
@@ -31,15 +32,13 @@ class SimpleIterator implements SimpleIteratorInterface
     /**
      * SimpleIterator constructor.
      *
-     * @param SuperIterator        $content
-     * @param FileGatewayInterface $implementor
+     * @param FileManagerAgency $fileManagerAgency
      */
     public function __construct(
-        SuperIterator $content,
-        FileGatewayInterface $implementor
+        FileManagerAgency $fileManagerAgency
     ) {
-        $this->content = $content;
-        $this->implementor = $implementor;
+        $this->implementor = $fileManagerAgency->getImplementor();
+        $this->content = $this->content = $fileManagerAgency->getContent();
     }
 
     /**
