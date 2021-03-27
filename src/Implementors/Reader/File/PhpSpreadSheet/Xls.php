@@ -5,7 +5,7 @@ declare(strict_types=1);
  * @author Max Demian <ticaje@filetea.me>
  */
 
-namespace Ticaje\FileManager\Implementors\Reader\File;
+namespace Ticaje\FileManager\Implementors\Reader\File\PhpSpreadSheet;
 
 use Iterator;
 use PhpOffice\PhpSpreadsheet\Reader\Xls as XlsLibrary;
@@ -13,7 +13,7 @@ use Ticaje\FileManager\Infrastructure\Driver\Reader\Interfaces\Gateway\XlsFileIn
 
 /**
  * Class Xls
- * @package Ticaje\FileManager\Implementors\Reader\File
+ * @package Ticaje\FileManager\Implementors\Reader\File\PhpSpreadSheet
  */
 class Xls implements XlsFileInterface
 {
@@ -39,5 +39,13 @@ class Xls implements XlsFileInterface
         $sheet = $this->concretion->load($fileName);
 
         return $sheet->getActiveSheet()->getRowIterator();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function asArray($object)
+    {
+        return is_array($object) ? $object : $object->toArray();
     }
 }
