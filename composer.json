@@ -20,7 +20,8 @@
     "require": {
         "php": "~7.2",
         "phpoffice/phpspreadsheet": "^1.17",
-        "box/spout": "^3.1"
+        "box/spout": "^3.1",
+        "ticaje/design-by-contract": "^1.0"
     },
     "version": "1.0.0",
     "autoload": {
