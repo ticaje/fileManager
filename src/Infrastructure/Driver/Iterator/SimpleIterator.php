@@ -56,21 +56,7 @@ class SimpleIterator implements SimpleIteratorInterface
      */
     public function findRow(int $number): ?array
     {
-        $found = false;
-        $result = null;
-        if (isset($this->cachedRows[$number])) {
-            return $this->cachedRows[$number];
-        }
-        while (!$found) {
-            $row = $this->content->current();
-            $key = $this->content->key();
-            $found = $number === $key;
-            $this->cachedRows[$key] = $row;
-            $result = $row;
-            $this->content->next();
-        }
-
-        return $this->implementor->asArray($result);
+        return $this->getChunk($number, $number);
     }
 
     /**
@@ -78,6 +64,7 @@ class SimpleIterator implements SimpleIteratorInterface
      */
     public function getChunk(int $begin, int $end): ?array
     {
+        $end ++;
         $result = [];
         // Returns none if no range at all
         if ($begin >= $end || $begin < 0) {
@@ -111,7 +98,6 @@ class SimpleIterator implements SimpleIteratorInterface
             $this->cachedRows[$key] = $this->implementor->asArray($row);
             $this->content->next();
         }
-
         return $result;
     }
 }
