@@ -10,6 +10,7 @@ namespace Ticaje\FileManager\Infrastructure\Driver\Iterator;
 use Iterator as SuperIterator;
 use Ticaje\FileManager\Infrastructure\Driver\Reader\Interfaces\FileInterface as FileManagerAgency;
 use Ticaje\FileManager\Infrastructure\Driver\Reader\Interfaces\Gateway\FileGatewayInterface;
+use ArrayIterator;
 
 /**
  * Class SimpleIterator
@@ -38,7 +39,7 @@ class SimpleIterator implements SimpleIteratorInterface
         FileManagerAgency $fileManagerAgency
     ) {
         $this->implementor = $fileManagerAgency->getImplementor();
-        $this->content = $this->content = $fileManagerAgency->getContent();
+        $this->content = new ArrayIterator($fileManagerAgency->getContent());
     }
 
     /**
