@@ -23,7 +23,7 @@
         "box/spout": "^3.1",
         "ticaje/design-by-contract": "^1.0"
     },
-    "version": "1.0.5",
+    "version": "1.0.6",
     "autoload": {
         "psr-4": {
             "Ticaje\\FileManager\\": "src/"
