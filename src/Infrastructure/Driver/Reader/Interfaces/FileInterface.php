@@ -25,7 +25,7 @@ interface FileInterface
     /**
      * @return mixed
      */
-    public function getContent():Iterator;
+    public function getContent(): Iterator;
 
     /**
      * @return bool
@@ -36,4 +36,10 @@ interface FileInterface
      * @return FileGatewayInterface
      */
     public function getImplementor(): FileGatewayInterface;
+
+    /**
+     * @return mixed
+     */
+    public function getContentCopy(): Iterator;
+
 }

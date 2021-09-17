@@ -21,7 +21,7 @@ use ArrayIterator;
  */
 class SimpleIterator implements SimpleIteratorInterface
 {
-    /** @var SuperIterator $content */
+    /** @var ArrayIterator $content */
     private $content;
 
     /** @var array $cachedRows */
@@ -39,7 +39,7 @@ class SimpleIterator implements SimpleIteratorInterface
         FileManagerAgency $fileManagerAgency
     ) {
         $this->implementor = $fileManagerAgency->getImplementor();
-        $this->content = new ArrayIterator($fileManagerAgency->getContent());
+        $this->content = $fileManagerAgency->getContentCopy();
     }
 
     /**

@@ -26,6 +26,13 @@ abstract class Base
     /** @var bool $hasHeader */
     protected $hasHeader;
 
+    /** @var Iterator|array $copy */
+    private $copy;
+
+    /** @var Iterator|array $content */
+    private $content;
+
+
     /**
      * Csv constructor.
      *
@@ -45,8 +52,8 @@ abstract class Base
      */
     public function setSource(string $fileName): SourceInterface
     {
-        $content = $this->implementor->fetchData($fileName);
-        $this->setContent($content);
+        $this->content = $this->implementor->fetchData($fileName);
+        $this->copy = $this->implementor->fetchData($fileName);
         $this->setHeader();
 
         return $this;
@@ -74,5 +81,10 @@ abstract class Base
     public function getImplementor(): FileGatewayInterface
     {
         return $this->implementor;
+    }
+
+    public function getContentCopy(): Iterator
+    {
+        return $this->copy;
     }
 }

@@ -20,8 +20,17 @@ trait FileInterface
     /** @var Iterator|array $header */
     private $header = [];
 
-    /** @var Iterator|array $content */
-    private $content;
+    /**
+     * @inheritDoc
+     */
+    public function getHeader()
+    {
+        return !empty($this->header) ? $this->header : (function () {
+            $this->setHeader();
+
+            return $this->header;
+        })();
+    }
 
     /**
      * @inheritDoc
@@ -40,36 +49,6 @@ trait FileInterface
     /**
      * @inheritDoc
      */
-    public function getHeader()
-    {
-        return !empty($this->header) ? $this->header : (function () {
-            $this->setHeader();
-
-            return $this->header;
-        })();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    private function setContent(Iterator $content): ReferencedSignature
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getContent():Iterator
-    {
-        return $this->content;
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function hasHeader(): bool
     {
         return $this->hasHeader;
@@ -78,5 +57,13 @@ trait FileInterface
     private function isContentIterator()
     {
         return $this->content instanceof Iterator;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getContent(): Iterator
+    {
+        return $this->content;
     }
 }
