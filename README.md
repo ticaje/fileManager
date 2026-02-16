@@ -5,7 +5,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ticaje/solid-file-manager.svg?style=flat-square)](https://packagist.org/packages/ticaje/solid-file-manager)
 [![Quality Score](https://img.shields.io/scrutinizer/g/ticaje/fileManager.svg?style=flat-square)](https://scrutinizer-ci.com/g/ticaje/fileManager)
 [![Total Downloads](https://img.shields.io/packagist/dt/ticaje/solid-file-manager.svg?style=flat-square)](https://packagist.org/packages/ticaje/solid-file-manager)
-[![Blog](https://img.shields.io/badge/Blog-hectorbarrientos.com-magenta)](https://hectorbarrientos.com)
+[![Author](https://img.shields.io/badge/HBLateral.com-%2302113a?style=labelColor=lightgrey)](https://hblateral.com)
 
 ## Preface
 
